@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Smart Agriculture</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('images/farm-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .register-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2d572c;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        input, button {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: 0.3s ease;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register-container">
+        <h1>Register</h1>
+        <form action="register.php" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password (Min 6 chars)" required>
+            <button type="submit" name="register"><a href="index.html"></a> Register</button>
+        </form>
+        <p>Already have an account? <a href="index.html">Login here</a></p>
+    </div>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            let password = document.querySelector('input[name="password"]').value;
+            let email = document.querySelector('input[name="email"]').value;
+
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long!");
+                event.preventDefault();
+            }
+
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email!");
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
